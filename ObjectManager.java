@@ -22,28 +22,28 @@ public class ObjectManager {
 	}
 
 	// Creates a new object by placing it in the object manager
-	static void createNewObject(String name, int secLev) {
-		objectManager.put(name, secLev);
+	static void create(String name, int level) {
+		objectManager.put(name, level);
 		valueManager.put(name, 0);
 	}
 
 	// Only reaches here after being verified by the Reference Monitor that the
 	// instruction is valid, then executes the write instruction
-	static void writeExecute(InstructionObject instr) {
+	static void write(InstructionObject instr) {
 		int val = instr.getValue();
 		String obj = instr.getObject();
 
 		valueManager.put(obj, val);
 	}
 	
-	static void destroyExecute(InstructionObject instr) {
+	static void destroy(InstructionObject instr) {
 		String obj = instr.getObject();
 		objectManager.remove(obj);
 	}
 
 	// Only reaches here after being verified by the Reference Monitor that the
 	// instruction is valid, then executes the read instruction
-	static void readExecute(InstructionObject instr) {
+	static void read(InstructionObject instr) {
 		String subj = instr.getSubject();
 		String obj = instr.getObject();
 
@@ -52,7 +52,7 @@ public class ObjectManager {
 	}
 
 	// If the instruction is an invalid read, sets the recently read object to 0
-	static void badReadExecute(InstructionObject instr) {
+	static void bad(InstructionObject instr) {
 		String subj = instr.getSubject();
 
 		readManager.put(subj, 0);

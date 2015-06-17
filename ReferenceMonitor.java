@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 
 public class ReferenceMonitor {
 
@@ -14,8 +14,8 @@ public class ReferenceMonitor {
 	}
 
 	// Create a new object within the object manager
-	static void createNewObject(String name, int secLev) {
-		ObjectManager.createNewObject(name, secLev);
+	static void create(String name, int secLev) {
+		ObjectManager.create(name, secLev);
 	}
 
 	// Return Hashmap that maintains the RUN call
@@ -38,7 +38,7 @@ public class ReferenceMonitor {
 		int objSeclvl = ObjectManager.getObjectManager().get(obj);
 
 		if (SecurityLevel.canWrite(subjSeclvl,objSeclvl)){
-			ObjectManager.writeExecute(instr);
+			ObjectManager.write(instr);
 		}
 	}
 
@@ -52,9 +52,9 @@ public class ReferenceMonitor {
 
 
 		if (SecurityLevel.dominates(subjSeclvl, objSeclvl)){
-			ObjectManager.readExecute(instr);
+			ObjectManager.read(instr);
 		} else {
-			ObjectManager.badReadExecute(instr);
+			ObjectManager.bad(instr);
 
 		}
 	}
@@ -63,7 +63,7 @@ public class ReferenceMonitor {
 	static void createExecute(InstructionObject instr) {
 		String subj = instr.getSubject();
 		int subjSec = SecureSystem.getSubjectManager().get(subj);
-		createNewObject(instr.getObject(), subjSec);
+		create(instr.getObject(), subjSec);
 	}
 
 	// Execute the RUN call.
@@ -109,7 +109,7 @@ public class ReferenceMonitor {
 		int objSeclvl = ObjectManager.getObjectManager().get(obj);
 
 		if (SecurityLevel.canWrite(subjSeclvl,objSeclvl)) {
-			ObjectManager.destroyExecute(instr);
+			ObjectManager.destroy(instr);
 		} else {
 			System.out.println("invalid instruction");
 		}
