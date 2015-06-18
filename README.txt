@@ -18,12 +18,14 @@ UT CS machines at GDC
 Aladdin and the Wonderful Lamp (alad10.txt) : http://textfiles.com/stories/alad10.txt
 The Seven Old Samurai (7oldsamr.txt) : http://textfiles.com/stories/7oldsamr.txt
 The Donkey that Thought He Was Clever (clevdonk.txt) : http://textfiles.com/stories/clevdonk.txt
+The Wolf and the Lamb (wolflamb.txt) : http://textfiles.com/stories/wolflamb.txt
 
 [Finish]
 The assignment should be finished as it will output inputname.out when given the command without verbose option and output a log if the verbose option is set. We didn't implement the bonus.
 
 [Results Summary]
-[No.]	[DocumentName] 		[Size] 	 		[Bandwidth]
-1		Clever Donkey		1968 bytes		80 bits/ms
-2		7 Old Samurai		2753 bytes		102 bits/ms
-3		Aladin				29051 bytes		312 bits/ms
+[No.]	[DocumentName] 			[Size] 	 		[Bandwidth]
+1		Clever Donkey			1968 bytes		80 bits/ms
+2		7 Old Samurai			2753 bytes		102 bits/ms
+3		Aladin					29051 bytes		312 bits/ms
+4		The Wolf and the Lamb	1767 bytes		78 bits/ms
